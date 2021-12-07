@@ -89,7 +89,7 @@ function stars(sel) {
 function createMovieItem(movie) {
     const r2s = r => r > 0 ? Pmgr.Util.fill(r, () => "⭐").join("") : "";
     const ratings = movie.ratings.map(id => Pmgr.resolve(id)).map(r =>
-        `<span class="badge bg-${r.user==userId?"primary":"secondary"}">
+        `<span class="badge bg-${r.user == userId ? "primary" : "secondary"}">
         ${Pmgr.resolve(r.user).username}: ${r.labels} ${r2s(r.rating)}
         </span>
         `
@@ -453,10 +453,10 @@ const login = (username, password) => {
         });
 }
 
-                 // -- IMPORTANTE --
-login("p", "p"); // <-- tu nombre de usuario y password aquí
-                 //   y puedes re-logearte como alguien distinto desde  la consola
-                 //   llamando a login() con otro usuario y contraseña
+// -- IMPORTANTE --
+login("g8", "q8wbx"); // <-- tu nombre de usuario y password aquí
+//   y puedes re-logearte como alguien distinto desde la consola
+//   llamando a login() con otro usuario y contraseña
 {
     /** 
      * Asocia comportamientos al formulario de añadir películas 
@@ -524,6 +524,17 @@ document.querySelector("#movieSearch").addEventListener("input", e => {
         c.style.display = ok ? '' : 'none';
     });
 })
+
+{
+
+    var myModal = document.querySelector("#modalPrueba")
+    var myInput = document.querySelector("#myInput")
+
+    myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+    })
+
+}
 
 // cosas que exponemos para poder usarlas desde la consola
 window.modalEditMovie = modalEditMovie;
