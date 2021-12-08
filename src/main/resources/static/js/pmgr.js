@@ -525,16 +525,6 @@ document.querySelector("#movieSearch").addEventListener("input", e => {
     });
 })
 
-{
-
-    var myModal = document.querySelector("#modalPrueba")
-    var myInput = document.querySelector("#myInput")
-
-    myModal.addEventListener('shown.bs.modal', function () {
-        myInput.focus()
-    })
-
-}
 
 // cosas que exponemos para poder usarlas desde la consola
 window.modalEditMovie = modalEditMovie;
