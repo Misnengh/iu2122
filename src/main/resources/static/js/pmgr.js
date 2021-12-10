@@ -96,6 +96,8 @@ function createMovieItem(movie) {
     ).join("");
 
     return `
+    
+    
     <div class="card" data-id="${movie.id}">
     <div class="card-header"">
         <h4 class="mb-0" title="${movie.id}">
@@ -126,6 +128,8 @@ function createMovieItem(movie) {
         </div>
     </div>
     </div>
+    
+    
  `;
 }
 
