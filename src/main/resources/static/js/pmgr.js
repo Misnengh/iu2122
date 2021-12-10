@@ -12,7 +12,7 @@ import * as Pmgr from './pmgrapi.js'
  * Recomiendo separar el fichero en 2 partes:
  * - parte "página-independiente": funciones que pueden generar cachos de
  *   contenido a partir del modelo, pero que no tienen referencias directas a la página
- * - parte pequeña, al final, de "pegamento": asocia comportamientos a
+ * - parte pequeña, al final, de "pegamento": asocia comportamientos a 
  *   elementos de la página.
  * Esto tiene la ventaja de que, si cambias tu página, sólo deberías tener
  * que cambiar el pegamento.
