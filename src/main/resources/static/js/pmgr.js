@@ -96,7 +96,7 @@ function createMovieItem(movie) {
     ).join("");
 
     let movieHtml = `
-                    <div class="col-4">
+                     <div class="col-xl-3 col-md-4 col-sm-6 col-xs-12" id="movieColumn"> 
                         <div class="card tarjeta" data-id="${movie.id}">
                             <div class="card-header"">
                                 <h4 class="mb-0" title="${movie.id}">
@@ -515,6 +515,17 @@ login("g8", "q8wbx"); // <-- tu nombre de usuario y password aquí
     });
     // activa rating con estrellitas
     stars("#movieRateForm .estrellitas");
+} {
+    /**
+     * formulario para buscar por filtros.
+     */
+
+    const f = document.querySelector("#filterSearchForm");
+    
+    document.querySelector("#buttonFilterSearch").addEventListener('click', e => {
+        console.log("enviando formulario de busqueda por filtros");
+        
+    });
 }
 
 /**
@@ -526,7 +537,7 @@ document.querySelector("#movieSearch").addEventListener("input", e => {
         const m = Pmgr.resolve(c.dataset.id);
         // aquí podrías aplicar muchos más criterios
         const ok = m.name.toLowerCase().indexOf(v) >= 0;
-        c.style.display = ok ? '' : 'none';
+        c.parentNode.style.display = ok ? '' : 'none'; //display none en div de columna para que se agrupen.
     });
 })
 
