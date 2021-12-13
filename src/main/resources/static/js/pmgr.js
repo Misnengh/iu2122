@@ -345,7 +345,7 @@ function update() {
         empty("#groups");
         empty("#users");
 
-        
+
 
 
         // y los volvemos a rellenar con su nuevo contenido
@@ -521,10 +521,53 @@ login("g8", "q8wbx"); // <-- tu nombre de usuario y password aquí
      */
 
     const f = document.querySelector("#filterSearchForm");
-    
+
     document.querySelector("#buttonFilterSearch").addEventListener('click', e => {
         console.log("enviando formulario de busqueda por filtros");
-        
+        if (f.checkValidity()) {
+            var title = f.querySelector("input[name=name]").value.toLowerCase();
+            var imbd = f.querySelector("input[name=imdb]").value.toLowerCase();
+            var director = f.querySelector("input[name=director]").value.toLowerCase();
+            var actors = f.querySelector("input[name=actors]").value.toLowerCase();
+            var year = f.querySelector("input[name=year]").value.toLowerCase();
+            var minutes = f.querySelector("input[name=minutes]").value.toLowerCase();
+
+            document.querySelectorAll("#movies div.card").forEach(c => {
+                const m = Pmgr.resolve(c.dataset.id);
+
+                const okTitle = m.name.toLowerCase().indexOf(title) >= 0;
+                const okImbd = m.imdb.toLowerCase().indexOf(imbd) >= 0;
+                const okDirector = m.director.toLowerCase().indexOf(director) >= 0;
+                const okActors = m.actors.toLowerCase().indexOf(actors) >= 0;
+
+                let okYear = true;
+                if (year != "") {
+                    okYear = m.year == year;  
+                } //al ser un num y no un string tenemos que hacer esto
+                let okMinutes = true;
+                if (minutes != "") {
+                    okMinutes = m.minutes == minutes;
+
+                } //igual para minutos
+                c.parentNode.style.display = okTitle && okImbd && okDirector && okActors && okYear && okMinutes ? '' : 'none';
+           })
+        } else {
+            e.preventDefault();
+            f.querySelector("button[type=submit]").click(); // fuerza validacion local
+        }
+
+
+    });
+
+    document.querySelector("#buttonRestaurar").addEventListener('click', e => {
+        f.querySelector("input[name=name]").value = "";
+        f.querySelector("input[name=imdb]").value = "";
+        f.querySelector("input[name=director]").value = "";
+        f.querySelector("input[name=actors]").value = "";
+        f.querySelector("input[name=year]").value = "";
+        f.querySelector("input[name=minutes]").value = "";
+
+        f.querySelector("button[type=submit]").click();
     });
 }
 
