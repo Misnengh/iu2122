@@ -68,10 +68,40 @@ fieldset.rating,
 
 /** fin CSS para controles de estrellas */
 
+/* color textos */
+h2 {
+    color: teal;
+}
+
+h4 {
+    color: teal;
+}
+
+h5 {
+    color: rgb(5, 38, 146);
+}
+
+
+/* fin color textos */
+
+
+/* color barra inferior y superior */
+div.row {
+    color: teal;
+}
+
+/* fin color barra inferior y superior */
+
 .barraInferior {
     margin-left: 50px;
     margin-right: 50px;
 }
+div.container-fluid {
+    background-color:lightseagreen;
+    color: midnightblue;
+}
+
+
 
 .tarjeta {
     margin: 10px;
