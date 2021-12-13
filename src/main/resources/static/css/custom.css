@@ -75,4 +75,9 @@ fieldset.rating,
 
 .tarjeta {
     margin: 10px;
+    height: 100%;
+}
+
+.colPel {
+    min-height: 300px;
 }

@@ -205,6 +205,20 @@
       </div>
 
 
+    <!-- Offcanvas para Usuarios -->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasUsers" aria-labelledby="offcanvasUsersLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasUsersLabel">Usuarios</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div id="users">
+
+            </div>
+        </div>
+      </div>
+
 
     <!-- barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -281,9 +295,9 @@
 
             <div class="col-sm-4 iulist">
                 <h2>Usuarios</h2>
-                <div id="users">
+                <!-- <div id="users">
 
-                </div>
+                </div> -->
                 <div id="addUser">
 
                 </div>
@@ -411,7 +425,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item barraInferior">
-                        <a class="nav-link" href="#">Usuarios</a>
+                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasUsers" aria-controls="offcanvasUsers">Usuarios</a>
                     </li>
                     <li class="nav-item barraInferior">
                         <a class="nav-link" href="#" data-bs-toggle="modal"

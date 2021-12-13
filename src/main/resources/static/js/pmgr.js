@@ -96,8 +96,8 @@ function createMovieItem(movie) {
     ).join("");
 
     let movieHtml = `
-                     <div class="col-xl-3 col-md-4 col-sm-6 col-xs-12" id="movieColumn"> 
-                        <div class="card tarjeta" data-id="${movie.id}">
+                     <div class="col-xl-3 col-md-4 col-sm-6 col-xs-12 colPel" id="movieColumn"> 
+                        <div class="card w-100 h-100 tarjeta" data-id="${movie.id}">
                             <div class="card-header"">
                                 <h4 class="mb-0" title="${movie.id}">
                                 ${movie.name} <small><i>(${movie.year})</i></small>
@@ -482,6 +482,7 @@ login("g8", "q8wbx"); // <-- tu nombre de usuario y password aquí
     // botón de generar datos (sólo para pruebas)
     document.querySelector("#buttonGenerateMovie").addEventListener('click',
         (e) => generaPelicula(f)); // aquí no hace falta hacer nada raro con el evento
+        //boton de cerrar modal de Añadir películas (limpiamos formulario al cerrar)
     document.querySelector("#buttonCloseAddMovie").addEventListener('click', (e) => {
         f.querySelector("input[name=name]").value = "";
         f.querySelector("input[name=imdb]").value = "";
@@ -578,9 +579,8 @@ login("g8", "q8wbx"); // <-- tu nombre de usuario y password aquí
         f.querySelector("input[name=actors]").value = "";
         f.querySelector("input[name=year]").value = "";
         f.querySelector("input[name=minutes]").value = "";
-
         f.querySelector("button[type=submit]").click();
-    });
+    }); //restaura los campos de la busqueda por filtros
 }
 
 /**
