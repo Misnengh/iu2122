@@ -468,17 +468,28 @@ login("g8", "q8wbx"); // <-- tu nombre de usuario y password aquí
      * en un bloque separado para que las constantes y variables no salgan de aquí, 
      * manteniendo limpio el espacio de nombres del fichero
      */
-    const f = document.querySelector("#addMovie form");
+    const f = document.querySelector("#modalAddMovie form");
     // botón de enviar
-    f.querySelector("button[type='submit']").addEventListener('click', (e) => {
+    document.querySelector("#buttonAddMovieModal").addEventListener('click', (e) => {
         if (f.checkValidity()) {
             e.preventDefault(); // evita que se haga lo normal cuando no hay errores
             nuevaPelicula(f); // añade la pelicula según los campos previamente validados
+
+            //falta cerrar el modal cuando se guarda la pelicula (al hacer click en Guardar)
+            //tampoco salta el mensaje de error al no poner todos los datos ??
         }
     });
     // botón de generar datos (sólo para pruebas)
-    f.querySelector("button.generar").addEventListener('click',
+    document.querySelector("#buttonGenerateMovie").addEventListener('click',
         (e) => generaPelicula(f)); // aquí no hace falta hacer nada raro con el evento
+    document.querySelector("#buttonCloseAddMovie").addEventListener('click', (e) => {
+        f.querySelector("input[name=name]").value = "";
+        f.querySelector("input[name=imdb]").value = "";
+        f.querySelector("input[name=director]").value = "";
+        f.querySelector("input[name=actors]").value = "";
+        f.querySelector("input[name=year]").value = "";
+        f.querySelector("input[name=minutes]").value = "";
+    });
 } {
     /**
      * formulario para modificar películas
@@ -550,6 +561,7 @@ login("g8", "q8wbx"); // <-- tu nombre de usuario y password aquí
 
                 } //igual para minutos
                 c.parentNode.style.display = okTitle && okImbd && okDirector && okActors && okYear && okMinutes ? '' : 'none';
+                //falta cerrar el modal cuando se busca por filtros (al hacer click en Buscar)
            })
         } else {
             e.preventDefault();

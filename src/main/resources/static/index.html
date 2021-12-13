@@ -158,6 +158,54 @@
         </div>
       </div>
 
+      <!-- Modal para añadir una película -->
+
+      <div class="modal fade" id="modalAddMovie" tabindex="-1" aria-labelledby="addMovieLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="filterSearchLabel">Añadir una película</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+            </div>
+            <div class="modal-body">
+                <form class="row" id="filterSearchForm">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="name" placeholder="Título" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="imdb"
+                            placeholder="ID en IMDB (ej.: tt1234567)" pattern="tt[0-9]+" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="director" placeholder="Director" required>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="actors" placeholder="Actores" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" name="year" placeholder="Año de estreno"
+                            min="1800" max="2022" required>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="number" class="form-control" name="minutes" placeholder="Duración en minutos"
+                            min="0" max="600" required>
+                    </div>
+                    <button style="display: none" type="submit">Invisible, sólo para validación</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="buttonCloseAddMovie">Cancelar</button>
+              <button class="btn btn-success generar" type="button" id="buttonGenerateMovie">Generar</button>
+              <button type="button" class="btn btn-primary" id="buttonAddMovieModal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     <!-- barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -216,39 +264,7 @@
             </div>
             <div class="row align-items-center" id="movies">
             </div>
-            <div id="addMovie" class="formularioValidado">
-                <h3>Añadir película</h3>
-                <form class="row">
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" id="f1" name="name" placeholder="Título" required>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" id="f2" name="imdb"
-                            placeholder="ID en IMDB (ej.: tt1234567)" required pattern="tt[0-9]+">
-                    </div>
 
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" name="director" placeholder="Director" required>
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" name="actors" placeholder="Actores" required>
-                    </div>
-
-                    <div class="col-md-4">
-                        <input type="number" class="form-control" name="year" placeholder="Año de estreno" min="1800"
-                            max="2022" required>
-                    </div>
-                    <div class="col-md-8">
-                        <input type="number" class="form-control" name="minutes" placeholder="Duración en minutos"
-                            min="0" max="600" required>
-                    </div>
-
-                    <div class="col-12 botones">
-                        <button class="btn btn-primary" type="submit">Añadir</button>
-                        <button class="btn btn-secondary generar" type="button">Generar</button>
-                    </div>
-                </form>
-            </div>
 
 
 
@@ -398,7 +414,8 @@
                         <a class="nav-link" href="#">Usuarios</a>
                     </li>
                     <li class="nav-item barraInferior">
-                        <a class="nav-link" href="#">Nueva película</a>
+                        <a class="nav-link" href="#" data-bs-toggle="modal"
+                        data-bs-target="#modalAddMovie">Nueva película</a>
                     </li>
                     <li class="nav-item barraInferior">
                         <a class="nav-link" href="#">Grupos</a>
