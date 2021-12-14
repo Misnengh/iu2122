@@ -86,9 +86,9 @@ h5 {
 
 
 /* color barra inferior y superior */
-div.row {
+/* div.row {
     color: teal;
-}
+} */
 
 /* fin color barra inferior y superior */
 
@@ -96,11 +96,18 @@ div.row {
     margin-left: 50px;
     margin-right: 50px;
 }
-div.container-fluid {
-    background-color:lightseagreen;
-    color: midnightblue;
+nav.navbar {
+    background-color:lightseagreen !important;
+    color: midnightblue !important;
+    
 }
 
+.mainContainer {
+    margin-top: 20px;
+    margin-bottom: 100px;
+    
+    
+}
 
 
 .tarjeta {
