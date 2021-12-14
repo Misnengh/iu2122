@@ -2,7 +2,7 @@
 
 Servidor y código de plantilla para una interfaz de gestión de valoraciones de películas, a usar para las prácticas de la asignatura *Interfaces de Usuario* de los grados de Informática de la Universidad Complutense, en su edición 2021-22.
 
-## Práctica asd
+## Práctica`asd
 
 Implementa la interfaz que propusiste en tu Práctica 5 (Diseño de una GUI) usando Boostrap 5, *sin* JQuery. Tendrás que usar
 - HTML
