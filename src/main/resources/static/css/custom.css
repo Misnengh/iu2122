@@ -106,7 +106,6 @@ nav.navbar {
     margin-top: 20px;
     margin-bottom: 100px;
     
-    
 }
 
 
@@ -117,4 +116,12 @@ nav.navbar {
 
 .colPel {
     min-height: 300px;
+}
+
+.fondo_claro {
+    background-color:rgb(198, 235, 233) !important;
+}
+
+.fondo_azul {
+    background-color:rgb(133, 211, 207) !important;
 }

@@ -98,13 +98,13 @@ function createMovieItem(movie) {
     let movieHtml = `
                      <div class="col-xl-3 col-md-4 col-sm-6 col-xs-12 colPel" id="movieColumn"> 
                         <div class="card w-100 h-100 tarjeta" data-id="${movie.id}">
-                            <div class="card-header"">
+                            <div class="card-header fondo_azul">
                                 <h4 class="mb-0" title="${movie.id}">
                                 ${movie.name} <small><i>(${movie.year})</i></small>
                                 </h4>
                             </div>
                             <div>
-                                <div class="card-body pcard">
+                                <div class="card-body pcard fondo_claro">
                                     <div class="row">
                                         <div class="col-auto">
                                             <img class="iuthumb" src="${serverUrl}poster/${movie.imdb}"/>
@@ -145,12 +145,12 @@ function createGroupItem(group) {
 
     return `
     <div class="card">
-    <div class="card-header">
+    <div class="card-header fondo_azul">
         <h4 class="mb-0" title="${group.id}">
             <b class="pcard">${group.name}</b>
         </h4>
     </div>
-    <div class="card-body pcard">
+    <div class="card-body pcard fondo_claro">
         <div class="row-sm-11">
             <span class="badge bg-primary">${Pmgr.resolve(group.owner).username}</span>
             ${allMembers}
@@ -179,12 +179,12 @@ function createUserItem(user) {
 
     return `
     <div class="card">
-    <div class="card-header">
+    <div class="card-header fondo_azul">
         <h4 class="mb-0" title="${user.id}">
             <b class="pcard">${user.username}</b>
         </h4>
     </div>
-    <div class="card-body pcard">
+    <div class="card-body pcard fondo_claro">
         <div class="row-sm-11">
             ${allGroups}
             ${allPending}
