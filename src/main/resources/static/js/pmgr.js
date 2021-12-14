@@ -108,24 +108,37 @@ function createMovieItem(movie) {
                                     <div class="row">
                                         <div class="col-auto">
                                 
-                                            <button id="close-image" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img class="iuthumb" src="${serverUrl}poster/${movie.imdb}"/></button>
+                                            <button id="close-image" type="button" class="btn btn-outline-light"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img class="iuthumb" src="${serverUrl}poster/${movie.imdb}"/></button>
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <h4 class="modal-title" id="staticBackdropLabel">${movie.name} <small><i>(${movie.year})</i></small></h4>
                                                 </div>
                                                 <div class="modal-body">
                                                 <div class="col">
+                                                
+                                               <div class="col-auto">
+                                                    <img class="iuthumb" src="${serverUrl}poster/${movie.imdb}"/>
+                                                </div>
+                                                
                                                 <div class="row-12">
-                                                    ${movie.director} / ${movie.actors} (${movie.minutes} min.)
-                                                </div>        
+                                                    Director: ${movie.director}
+                                                </div>  
+                                            
                                                 <div class="row-12">
-                                                    ${ratings}
-                                                </div>        
+                                                    Actores: ${movie.actors} 
+                                                </div>
+                                                <div class="row-12">
+                                                    Duración: ${movie.minutes} min
+                                                </div>
+                                  
+                                                <div class="row-12">
+                                                    Valoración: ${ratings}
+                                                </div>
+                                           
                                                 <div class="iucontrol movie">
                                                     <button class="rm" data-id="${movie.id}">🗑️</button>
                                                     <button class="edit" data-id="${movie.id}">✏️</button>
@@ -134,8 +147,7 @@ function createMovieItem(movie) {
                                             </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Understood</button>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                 </div>
                                                 </div>
                                             </div>
