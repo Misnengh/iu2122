@@ -124,8 +124,8 @@ function createMovieItem(movie) {
                                                 <div class="modal-body">
                                                 <div class="col">
                                                 
-                                               <div class="col-auto">
-                                                    <img class="iuthumb" src="${serverUrl}poster/${movie.imdb}"/>
+                                               <div class="col-auto divImgModal">
+                                                    <img class="iuthumb imgModal" src="${serverUrl}poster/${movie.imdb}"/>
                                                 </div>
                                                 
                                                 <div class="row-12">
@@ -169,6 +169,7 @@ function createMovieItem(movie) {
 }
 
 function createGroupItem(group) {
+    
     let allMembers = group.members.map((id) =>
         `<span class="badge bg-secondary">${Pmgr.resolve(id).username}</span>`
     ).join(" ");
@@ -179,6 +180,12 @@ function createGroupItem(group) {
             ${Pmgr.resolve(r.user).username}</span>`
 
     ).join(" ");
+
+    if (group.members.includes(userId)) {
+        console.log("está!!!!");
+    }
+
+    console.log(userId);
 
     return `
     <div class="card">
@@ -487,6 +494,7 @@ const login = (username, password) => {
             update(d);
             userId = Pmgr.state.users.find(u =>
                 u.username == username).id;
+            
         })
         .catch(e => {
             console.log(e, `error ${e.status} en login (revisa la URL: ${e.url}, y verifica que está vivo)`);
@@ -498,6 +506,7 @@ const login = (username, password) => {
 login("g8", "q8wbx"); // <-- tu nombre de usuario y password aquí
 //   y puedes re-logearte como alguien distinto desde la consola
 //   llamando a login() con otro usuario y contraseña
+
 {
     /** 
      * Asocia comportamientos al formulario de añadir películas 
@@ -563,6 +572,7 @@ login("g8", "q8wbx"); // <-- tu nombre de usuario y password aquí
     });
     // activa rating con estrellitas
     stars("#movieRateForm .estrellitas");
+    stars("#filterSearchForm .estrellitas");
 } {
     /**
      * formulario para buscar por filtros.
@@ -574,11 +584,25 @@ login("g8", "q8wbx"); // <-- tu nombre de usuario y password aquí
         console.log("enviando formulario de busqueda por filtros");
         if (f.checkValidity()) {
             var title = f.querySelector("input[name=name]").value.toLowerCase();
+
             var imbd = f.querySelector("input[name=imdb]").value.toLowerCase();
+
             var director = f.querySelector("input[name=director]").value.toLowerCase();
+
             var actors = f.querySelector("input[name=actors]").value.toLowerCase();
+
             var year = f.querySelector("input[name=year]").value.toLowerCase();
+
             var minutes = f.querySelector("input[name=minutes]").value.toLowerCase();
+
+            var estrellas = -2;
+            var hayEstrellas = false;
+            if (f.querySelector('input[name="rating"]:checked') !== null) {
+                hayEstrellas = true;
+                estrellas = f.querySelector('input[name="rating"]:checked').value; 
+            }
+
+            var tag = f.querySelector("input[name=tag]").value.toLowerCase();
 
             document.querySelectorAll("#movies div.card").forEach(c => {
                 const m = Pmgr.resolve(c.dataset.id);
@@ -588,16 +612,44 @@ login("g8", "q8wbx"); // <-- tu nombre de usuario y password aquí
                 const okDirector = m.director.toLowerCase().indexOf(director) >= 0;
                 const okActors = m.actors.toLowerCase().indexOf(actors) >= 0;
 
+               
+
                 let okYear = true;
                 if (year != "") {
                     okYear = m.year == year;  
                 } //al ser un num y no un string tenemos que hacer esto
+
                 let okMinutes = true;
                 if (minutes != "") {
                     okMinutes = m.minutes == minutes;
-
                 } //igual para minutos
-                c.parentNode.style.display = okTitle && okImbd && okDirector && okActors && okYear && okMinutes ? '' : 'none';
+
+                let okRating = false; //inicializamos
+                if (hayEstrellas) { //si hay alguna estrella seleccionada tenemos que quitar los que no tienen ese rate 
+                    m.ratings.forEach(r => {  
+                        if (estrellas == Pmgr.resolve(r).rating) { //si la película tiene algun rate igual al seleccionado
+                            okRating = true; //no quitamos la pelicula
+                        } 
+                    })
+
+                } else {
+                    okRating = true; //si no hay rating seleccionado se dejan todas
+                }
+
+                let okTag = false;
+                if (tag != "") {
+                    m.ratings.forEach(t => {
+                        
+                        if (Pmgr.resolve(t).labels.indexOf(tag) >= 0) {
+                            okTag = true;
+                        }
+                    })
+                } else {
+                    okTag = true;
+                }
+
+                
+                c.parentNode.style.display = okTitle && okImbd && okDirector && okActors && okYear && okMinutes && okRating && okTag ? '' : 'none';
                 //falta cerrar el modal cuando se busca por filtros (al hacer click en Buscar)
            })
         } else {
