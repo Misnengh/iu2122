@@ -2,6 +2,19 @@
 
 Servidor y código de plantilla para una interfaz de gestión de valoraciones de películas, a usar para las prácticas de la asignatura *Interfaces de Usuario* de los grados de Informática de la Universidad Complutense, en su edición 2021-22.
 
+# Miembros del grupo:
+Matteo Isnenghi Tamayo
+Luis Pecos Sánchez
+Nuria Alonso González
+
+# Diseño de la interfaz
+
+Respecto a nuestro diseño principal hemos tenido que cambiar bastantes cosas para adaptarlo a una pagina web, puesto que nuestro diseño inicial era para una aplicación movil.
+Hemos decidido mantener el menú inferior con tres iconos que gestionan los tres apartados principales de la página web.
+También hemos decidido mostrar solo la imagen de las peliculas justo al titulo y que sea solo cuando presionas en una de ellas cuando se muestra una tarjeta con toda la información de la misma.
+Los apartados de grupos y usuarios aparecen en los extremos derecho e izquierdo respectivamente.
+
+
 ## Práctica`asd
 
 Implementa la interfaz que propusiste en tu Práctica 5 (Diseño de una GUI) usando Boostrap 5, *sin* JQuery. Tendrás que usar
