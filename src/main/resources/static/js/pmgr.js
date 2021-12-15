@@ -108,10 +108,10 @@ function createMovieItem(movie) {
                                     <div class="row">
                                         <div class="col-auto">
                                 
-                                            <button id="close-image" type="button" class="btn btn-outline-light"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img class="iuthumb" src="${serverUrl}poster/${movie.imdb}"/></button>
+                                            <button id="close-image" type="button" class="btn btn-outline-light"  data-bs-toggle="modal" data-bs-target="#modal${movie.id}"><img class="iuthumb imgTarjeta" src="${serverUrl}poster/${movie.imdb}"/></button>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal fade" id="modal${movie.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 <div class="modal-header">

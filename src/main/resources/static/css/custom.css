@@ -1,7 +1,7 @@
 /* usa este fichero para personalizar tus vistas */
 
 .iuthumb {
-    height: 375px;
+    size: 10px;
 }
 
 .formularioValidado {
@@ -124,4 +124,19 @@ nav.navbar {
 
 .fondo_azul {
     background-color:rgb(133, 211, 207) !important;
+}
+
+.modalSecundario {
+    z-index: 1062 !important;
+}
+.modalSecundario-backdrop.show {
+    z-index: 1061 !important;
+}
+
+#close-image {
+    height: 375px;
+}
+
+.imgTarjeta {
+    width: 100%;
 }
