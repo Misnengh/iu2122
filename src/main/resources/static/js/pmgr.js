@@ -108,10 +108,14 @@ function createMovieItem(movie) {
                                     <div class="row">
                                         <div class="col-auto">
                                 
-                                            <button id="close-image" type="button" class="btn btn-outline-light"  data-bs-toggle="modal" data-bs-target="#modal${movie.id}"><img class="iuthumb imgTarjeta" src="${serverUrl}poster/${movie.imdb}"/></button>
+                                            <button id="close-image" type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-backdrop="false" data-bs-target="#modal${movie.id}">
+                                                <div class="contenedorImagen"> 
+                                                    <img class="iuthumb imgTarjeta" src="${serverUrl}poster/${movie.imdb}"/>
+                                                </div> 
+                                            </button>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="modal${movie.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal modalPrincipal" id="modal${movie.id}" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                 <div class="modal-header">
@@ -140,9 +144,9 @@ function createMovieItem(movie) {
                                                 </div>
                                            
                                                 <div class="iucontrol movie">
-                                                    <button class="rm" data-id="${movie.id}">🗑️</button>
-                                                    <button class="edit" data-id="${movie.id}">✏️</button>
-                                                    <button class="rate" data-id="${movie.id}">⭐</button>
+                                                    <button class="rm" data-bs-toggle="modal" data-id="${movie.id}">🗑️</button>
+                                                    <button class="edit" data-bs-toggle="modal" data-id="${movie.id}">✏️</button>
+                                                    <button class="rate" data-bs-toggle="modal" data-id="${movie.id}">⭐</button>
                                                 </div>
                                             </div>
                                                 </div>
@@ -322,7 +326,7 @@ function generaPelicula(formulario) {
  * funcion actualizaElementos (que debe generar options), y hace que
  * cualquier búsqueda filtre los options visibles.
  */
-let oldHandler = false;
+// let oldHandler = false;
 /**
  * Comportamiento de filtrado dinámico para un select-con-busqueda.
  * 
@@ -332,7 +336,7 @@ let oldHandler = false;
  * @param {string} div selector que devuelve el div sobre el que operar
  * @param {Function} actualiza el contenido del select correspondiente
  */
-function activaBusquedaDropdown(div, actualiza) {
+/* function activaBusquedaDropdown(div, actualiza) {
     let search = document.querySelector(`${div} input[type=search]`);
     let select = document.querySelector(`${div} select`);
 
@@ -357,7 +361,7 @@ function activaBusquedaDropdown(div, actualiza) {
         search.removeEventListener('input', handler);
     }
     oldHandler = search.addEventListener('input', handler);
-}
+} */
 
 //
 // Función que refresca toda la interfaz. Debería llamarse tras cada operación
@@ -404,7 +408,6 @@ function update() {
                     const input = formulario.querySelector(`input[name="${k}"]`);
                     if (input) input.value = v;
                 }
-
                 modalEditMovie.show(); // ya podemos mostrar el formulario
             }));
         // botones de evaluar películas
@@ -452,13 +455,13 @@ function update() {
     }
 
     /* para que siempre muestre los últimos elementos disponibles */
-    activaBusquedaDropdown('#dropdownBuscablePelis',
+/*     activaBusquedaDropdown('#dropdownBuscablePelis',
         (select) => {
             empty(select);
             Pmgr.state.movies.forEach(m =>
                 appendTo(select, `<option value="${m.id}">${m.name}</option>`));
         }
-    );
+    ); */
 }
 
 //
@@ -641,3 +644,4 @@ window.Pmgr = Pmgr;
 // ejecuta Pmgr.populate() en una consola para generar datos de prueba en servidor
 // ojo - hace *muchas* llamadas a la API (mira su cabecera para más detalles)
 // Pmgr.populate();
+

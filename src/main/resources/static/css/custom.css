@@ -129,14 +129,17 @@ nav.navbar {
 .modalSecundario {
     z-index: 1062 !important;
 }
-.modalSecundario-backdrop.show {
-    z-index: 1061 !important;
+
+.modalPrincipal {
+    z-index: 1060;
 }
 
-#close-image {
+.contenedorImagen {
     height: 375px;
+    width: 100%;
 }
 
 .imgTarjeta {
     width: 100%;
+    height: 100%;
 }
